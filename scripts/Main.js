@@ -9,21 +9,21 @@ system.afterEvents.scriptEventReceive.subscribe(data => {
     const inventory = player.getComponent("inventory").container;
     const selectedItem = inventory.getItem(player.selectedSlotIndex);
     if (!selectedItem) {
-      player.sendMessage("§cアイテムを持っていません!");
+      player.sendMessage("§c未手持物品!");
       return;
     }
     if (!data.message) {
-      player.sendMessage("§c使い方: /scriptevent sla:setlore テキスト");
+      player.sendMessage("§c使用方法: /scriptevent sla:setlore 内容");
       return;
     }
     const loreList = data.message.split("\\n");
     if (loreList.length > 20) {
-      player.sendMessage("§c改行しすぎです! 20行以内に収めてください。");
+      player.sendMessage("§c行数超出限制。最多20行");
       return;
     }
     for (const lore of loreList) {
       if (lore.length > 50) {
-        player.sendMessage("§c長すぎる行があります! 各行は50字以内に収めてください。");
+        player.sendMessage("§c字数太多，最多50字。");
         return;
       }
     }
@@ -31,9 +31,9 @@ system.afterEvents.scriptEventReceive.subscribe(data => {
     try {
       selectedItem.setLore(loreList);
       inventory.setItem(player.selectedSlotIndex, selectedItem);
-      player.sendMessage("§aLoreを設定しました!");
+      player.sendMessage("§aLore设置完成!");
     } catch(e) {
-      player.sendMessage(`§cエラーが発生したので設定ができませんでした!\n${e}`);
+      player.sendMessage(`§c发生错误，无法设置!\n${e}`);
     }
     return;
   }
@@ -42,16 +42,16 @@ system.afterEvents.scriptEventReceive.subscribe(data => {
     const inventory = player.getComponent("inventory").container;
     const selectedItem = inventory.getItem(player.selectedSlotIndex);
     if (!selectedItem) {
-      player.sendMessage("§cアイテムを持っていません!");
+      player.sendMessage("§c未手持物品!");
       return;
     }
 
     try {
       selectedItem.setLore();
       inventory.setItem(player.selectedSlotIndex, selectedItem);
-      player.sendMessage("§aLoreをクリアしました!");
+      player.sendMessage("§aLore设置完成!");
     } catch(e) {
-      player.sendMessage(`§cエラーが発生したのでができませんでした!\n${e}`);
+      player.sendMessage(`§c发生错误，无法设置!\n${e}`);
     }
     return;
   }
