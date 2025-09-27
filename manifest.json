@@ -1,10 +1,10 @@
 {
   "format_version": 2,
   "header": {
-    "name": "SetLoreAddon v1.0.0",
-    "description": "アイテムに説明文を付けるアドオン!\n/scriptevent sla:setlore [lore]\nby YuuhaLand",
+    "name": "SetLoreAddon v1.0.1",
+    "description": "设置物品描述的插件。\nby YuuhaLand|由Alex_Nute翻译",
     "uuid": "e264389b-16c8-4318-8330-0d5b4df94789",
-    "version": [ 1, 0, 0 ],
+    "version": [ 1, 0, 1 ],
     "min_engine_version": [ 1, 13, 0 ]
   },
   "modules": [
